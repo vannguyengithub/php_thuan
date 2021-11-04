@@ -104,7 +104,7 @@
                 <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold">Họ Và Tên</label>
-                        <input name="name" type="text" value="<?php echo $data['name']; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name product">
+                        <input name="name" type="text" value="<?php echo $data['name']; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
                         <?php if (isset($error['name'])): ?>
                             <p class="text-danger"> <?php echo $error['name']; ?></p>
                         <?php endif; ?>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold"> Email </label>
-                        <input name="email" type="email" value="<?php echo $data['email']; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter email...">
+                        <input name="email" type="email" value="<?php echo $data['email']; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
                         <?php if (isset($error['email'])): ?>
                             <p class="text-danger"> <?php echo $error['email']; ?></p>
                         <?php endif; ?>
@@ -121,7 +121,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold">Số Điện Thoại (phone) </label>
-                        <input name="phone" type="number" value="<?php echo $data['phone']; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="+84 *********">
+                        <input name="phone" type="number" value="<?php echo $data['phone']; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
                         <?php if (isset($error['phone'])): ?>
                             <p class="text-danger"> <?php echo $error['phone']; ?></p>
                         <?php endif; ?>
@@ -130,7 +130,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold">Mật Khẩu (Password) </label>
-                        <input name="password" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="****">
+                        <input name="password" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
                         <?php if (isset($error['password'])): ?>
                             <p class="text-danger"> <?php echo $error['password']; ?></p>
                         <?php endif; ?>
@@ -139,7 +139,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold">ConfigPassword </label>
-                        <input name="re_password" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="****">
+                        <input name="re_password" type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
                         <?php if (isset($error['re_password'])): ?>
                             <p class="text-danger"> <?php echo $error['re_password']; ?></p>
                         <?php endif; ?>

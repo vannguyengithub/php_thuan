@@ -20,7 +20,7 @@
     $sql = "SELECT product.*, category.name as namecate FROM product
             LEFT JOIN category on category.id = product.category_id";
 
-    $product = $db->fetchJone('product', $sql, $p, 5, true);
+    $product = $db->fetchJone('product', $sql, $p, 10, true);
     if(isset($product['page']))
     {
         $sotrang = $product['page'];
@@ -34,7 +34,7 @@
     <!-- Nội Dung -->
     <div class="container-fluid">
         <!-- Page Heading -->
-        <h1 class="h3 text-gray-800">DANH SÁCH <span class="border-bottom-danger">PRODUCT</span></h1>
+        <h1 class="h3 text-gray-800">DANH SÁCH <span class="border-bottom-danger">SẢN PHẨM</span></h1>
     <div class="row">
         <div class="card-body">
             <a class="btn btn-primary"href="add.php">Thêm Mới <span class="border-bottom-danger">Product</span></a>
@@ -55,7 +55,8 @@
                             <th>Slug</th>
                             <th>Update_date</th>
                             <th>Category_id</th>
-                            <th>Sale (Giảm giá)</th>
+                            <th>price</th>
+                            <th>Sale (%)</th>
                             <th>Ảnh (thunbar)</th>
                             <th>Số Lượng</th>
                             <th>EDIT</th>
@@ -69,7 +70,8 @@
                             <th>Slug</th>
                             <th>Update_date</th>
                             <th>Category_id</th>
-                            <th>Sale (Giảm giá)</th>
+                            <th>price</th>
+                            <th>Sale (%)</th>
                             <th>Ảnh (thunbar)</th>
                             <th>Số Lượng</th>
                             <th>EDIT</th>
@@ -84,8 +86,9 @@
                             <td><?php echo $item['slug'] ?></td>
                             <td><?php echo $item['created_at'] ?></td>
                             <td><?php echo $item['namecate'] ?></td>
-                            <td><?php echo $item['sale']?></td>
-                            <td><img src="<?php echo uploads() ?>product/<?php echo $item['thunbar']?>" width="125px" height="110px" ></td>
+                            <td><?php echo $item['price']?> &#8363; </td>
+                            <td><?php echo $item['sale']?> %</td>
+                            <td><img src="<?php echo uploads() ?>product/<?php echo $item['thunbar_3']?>" width="125px" height="110px" ></td>
                             <td><?php echo $item['number'] ?></td>
                             <td><a class="btn btn-outline-info" href="edit.php?id=<?php echo $item['id'] ?>"> Edit </a></td>
                             <td><a class="btn btn-outline-danger" href="delete.php?id=<?php echo $item['id'] ?>"> Delete </a></td>

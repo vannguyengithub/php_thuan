@@ -23,6 +23,7 @@
             "price"         => postInput('price'),
             "content"       => postInput('content'),
             "number"        => postInput('number'),
+            "sale"          => postInput('sale'),
         ];
 
         $error = [];
@@ -42,20 +43,7 @@
             $error['price'] = "Bạn hãy nhập giá cho sản phẩm !";
         }
 
-        if(postInput('content') == '')
-        {
-            $error['content'] = "Bạn hãy viết nội dung gì đó về sản phẩm !";
-        }
-
-        if(postInput('number') == '')
-        {
-            $error['number'] = "Bạn hãy nhập số lượng cho sản phẩm !";
-        }
-
-        if (! isset($_FILES['thunbar']))
-        {
-            $error['thunbar'] = "Hãy chọn hình ảnh !";
-        }
+        
 
         // nếu error trống có nghĩa là không có lỗi.
         if(empty($error))
@@ -137,7 +125,7 @@
     <!-- Nội Dung -->
     <div class="container-fluid">
         <!-- Page Heading -->
-        <h1 class="h3 mb-4 text-gray-800">CHỈNH SỬA <span class="border-bottom-danger">PRODUCT</span></h1>
+        <h1 class="h3 mb-4 text-gray-800">CHỈNH SỬA <span class="border-bottom-danger">SẢN PHẨM</span></h1>
         <?php require_once __DIR__.'/../../../partials/notification.php' ?>
         <!--  -->
         <div class="row">
@@ -146,7 +134,7 @@
                 <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold">Danh Mục Sản Phẩm</label>
                         <select name="category_id" id="" class="form-control">
-                            <option value=""> - Chọn Danh Mục Của Sản Phẩm -    </option>
+                            <option value=""> - Chọn Danh Mục Của Sản Phẩm -  </option>
                             <?php foreach ($category as $item) : ?>
                                 <option value="<?php echo $item['id']; ?>" <?php echo $editProduct['category_id'] == $item['id'] ? "selected = 'selected'" : ''; ?> > <?php echo $item['name']; ?> </option>
                             <?php endforeach; ?>
@@ -158,7 +146,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="font-weight-bold">Nhập Tên Sản Phẩm</label>
+                        <label for="exampleInputEmail1" class="font-weight-bold">Tên Sản Phẩm</label>
                         <input name="name" value="<?php echo $editProduct['name']; ?>" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name product">
                         <?php if (isset($error['name'])): ?>
                             <p class="text-danger"> <?php echo $error['name']; ?></p>
@@ -168,32 +156,26 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold">Giá Sản Phẩm (vnđ)</label>
                         <input name="price" value="<?php echo $editProduct['price']; ?>" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="$.Enter price product...">
-                        <?php if (isset($error['price'])): ?>
-                            <p class="text-danger"> <?php echo $error['price']; ?></p>
-                        <?php endif; ?>
+                       
                       
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold">Số Lượng Sản Phẩm</label>
                         <input name="number" value="<?php echo $editProduct['number']; ?>" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
-                        <?php if (isset($error['number'])): ?>
-                            <p class="text-danger"> <?php echo $error['number']; ?></p>
-                        <?php endif; ?>
+                      
                       
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="font-weight-bold"> Giảm giá (sale)</label>
-                        <input name="sale" value="<?php echo $editProduct['sale']; ?>" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0">
+                        <label for="exampleInputEmail1" class="font-weight-bold"> Giảm giá (%)</label>
+                        <input name="sale" value="<?php echo $editProduct['sale']; ?>" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0%">
                       
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold"> Hình Ảnh </label>
                         <input name="thunbar" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                        <?php if (isset($error['thunbar'])): ?>
-                            <p class="text-danger"> <?php echo $error['thunbar']; ?></p>
-                        <?php endif; ?>
+                       
                         <br>
                         <div class="text-center">
                             <img src="<?php echo uploads() ?>product/<?php echo $editProduct['thunbar']; ?>" alt="" style="width: 200px; height: 200px;">
@@ -226,10 +208,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold">Nội Dung (Content)</label>
                         <textarea name="content" id="content" cols="30" rows="10" class="form-control"><?php echo $editProduct['content']; ?></textarea>
-                        <?php if (isset($error['content'])): ?>
-                            <p class="text-danger"> <?php echo $error['content']; ?></p>
-                        <?php endif; ?>
-                      
+                       
                     </div>
                 
                     <button type="submit" class="btn btn-primary">Add now</button>
@@ -239,16 +218,11 @@
     </div>
     
     <!-- Kết thúc Nội Dung-->
-<?php   require_once __DIR__ . '/../../layouts/footer.php' ?>    
-        <script type="text/javascript">
-		    // summer note
-			$(function() {
-				$('#content').summernote({
-				height: 350,   //set editable area's height
-                placeholder: 'Hi, Im Nguyen',
-				});
-		    })
-        </script>
-        <!-- include summernote css/js -->
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<?php   require_once __DIR__ . '/../../layouts/footer.php' ?>
+<!-- include ckeditor css/js -->    
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'content' );
+</script>
+        <!-- include ckeditor css/js -->
+        

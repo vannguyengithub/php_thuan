@@ -8,7 +8,7 @@
      * Lấy ra danh sách danh mục sản phẩm.
      */
     $category = $db->fetchAll("category");
-
+    
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -21,6 +21,7 @@
             "price"         => postInput('price'),
             "content"       => postInput('content'),
             "number"        => postInput('number'),
+            "sale"          => postInput('sale'),
         ];
 
         $error = [];
@@ -38,21 +39,6 @@
         if(postInput('price') == '')
         {
             $error['price'] = "Bạn hãy nhập giá cho sản phẩm !";
-        }
-
-        if(postInput('content') == '')
-        {
-            $error['content'] = "Bạn hãy viết nội dung gì đó về sản phẩm !";
-        }
-
-        if(postInput('number') == '')
-        {
-            $error['number'] = "Bạn hãy nhập số lượng cho sản phẩm !";
-        }
-
-        if (! isset($_FILES['thunbar']))
-        {
-            $error['thunbar'] = "Hãy chọn hình ảnh !";
         }
 
 
@@ -159,8 +145,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="font-weight-bold">Nhập Tên Sản Phẩm</label>
-                        <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name product">
+                        <label for="exampleInputEmail1" class="font-weight-bold">Tên Sản Phẩm</label>
+                        <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="tên sản phẩm">
                         <?php if (isset($error['name'])): ?>
                             <p class="text-danger"> <?php echo $error['name']; ?></p>
                         <?php endif; ?>
@@ -168,7 +154,7 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold">Giá Sản Phẩm (vnđ)</label>
-                        <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="100.000">
+                        <input name="price" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="100.000.000">
                         <?php if (isset($error['price'])): ?>
                             <p class="text-danger"> <?php echo $error['price']; ?></p>
                         <?php endif; ?>
@@ -176,26 +162,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="font-weight-bold">Số Lượng Sản Phẩm (the number of products)</label>
-                        <input name="number" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="10">
-                        <?php if (isset($error['number'])): ?>
-                            <p class="text-danger"> <?php echo $error['number']; ?></p>
-                        <?php endif; ?>
+                        <label for="exampleInputEmail1" class="font-weight-bold">Số Lượng Sản Phẩm</label>
+                        <input name="number" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                       
                       
                     </div>
 
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="font-weight-bold"> Giảm giá (sale)</label>
-                        <input name="sale" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0">
+                        <label for="exampleInputEmail1" class="font-weight-bold"> Giảm giá (sale %)</label>
+                        <input name="sale" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="0%">
                       
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold"> Hình Ảnh </label>
                         <input name="thunbar" type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                        <?php if (isset($error['thunbar'])): ?>
-                            <p class="text-danger"> <?php echo $error['thunbar']; ?></p>
-                        <?php endif; ?>
-
                     </div>
 
                     <div class="form-group">
@@ -208,9 +188,6 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1" class="font-weight-bold">Nội Dung (Content)</label>
                         <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
-                        <?php if (isset($error['content'])): ?>
-                            <p class="text-danger"> <?php echo $error['content']; ?></p>
-                        <?php endif; ?>
                       
                     </div>
                 
@@ -222,15 +199,9 @@
     
     <!-- Kết thúc Nội Dung-->
 <?php   require_once __DIR__ . '/../../layouts/footer.php' ?>    
-        <script type="text/javascript">
-		    // summer note
-			$(function() {
-				$('#content').summernote({
-				height: 350,   //set editable area's height
-                placeholder: 'Hi, Im Nguyen',
-				});
-		    })
-        </script>
-        <!-- include summernote css/js -->
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<!-- include ckeditor css/js -->    
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'content' );
+</script>
+<!-- end include ckeditor css/js -->

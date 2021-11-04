@@ -49,9 +49,9 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Website Data </h6>
-                            <a class="collapse-item <?php echo isset($open) && $open == 'category' ? 'active bg-light' : '' ?>" href="<?php echo modules('category')?>">Danh mục sản phẩm</a>
-                            <a class="collapse-item <?php echo isset($open) && $open == 'product' ? 'active bg-light' : '' ?>" href="<?php echo modules('product')?>">Sản phẩm</a>
-                            <a class="collapse-item <?php echo isset($open) && $open == 'news' ? 'active bg-light' : '' ?>" href="<?php echo modules('news')?>">Tin tức</a>
+                            <a class="collapse-item <?php echo isset($open) && $open == 'category' ? 'active bg-light' : '' ?>" href="<?php echo modules('category')?>">Danh Mục</a>
+                            <a class="collapse-item <?php echo isset($open) && $open == 'product' ? 'active bg-light' : '' ?>" href="<?php echo modules('product')?>">Sản Phẩm</a>
+                            <a class="collapse-item <?php echo isset($open) && $open == 'slider' ? 'active bg-light' : '' ?>" href="<?php echo modules('slider')?>">Slider</a>
                         </div>
                     </div>
                 </li>
@@ -60,21 +60,37 @@
                     <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
                         aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>User login Admin</span>
+                    <span>User / Admin</span>
                     </a>
                     <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Web admin </h6>
-                            <a class="collapse-item <?php echo isset($open) && $open == 'admin' ? 'active bg-light' : '' ?>" href="<?php echo modules('admin')?>"> login/register Admin</a>
+                            <h6 class="collapse-header">Account Admin </h6>
+                            <a class="collapse-item <?php echo isset($open) && $open == 'admin' ? 'active bg-light' : '' ?>" href="<?php echo modules('admin')?>">Admin</a>
+                            <a class="collapse-item <?php echo isset($open) && $open == 'user_order' ? 'active bg-light' : '' ?>" href="<?php echo modules('user_order')?>">User_Order</a>
+                        </div>
+                    </div>
+                </li>
+                 <!--  -->
+                 <li class="nav-item active">
+                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                        aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Giao dịch</span>
+                    </a>
+                    <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">thông tin khách hàng </h6>
+                            <a class="collapse-item <?php echo isset($open) && $open == 'order' ? 'active bg-light' : '' ?>" href="<?php echo modules('order')?>">Đơn Hàng</a>
                         </div>
                     </div>
                 </li>
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <a class="nav-link" href="/dongho/dang-xuat.php">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>đăng xuất</span></a>
                 </li>
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
@@ -262,7 +278,7 @@
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin name</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['admin_name'] ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="<?php echo base_url(); ?>public/admin/img/undraw_profile.svg">
                                 </a>

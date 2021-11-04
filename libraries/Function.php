@@ -19,7 +19,7 @@
 
     function base_url()
         {
-	        return $url="http://localhost:81/website/";
+	        return $url="http://localhost:80/dongho/";
         }
 
     function public_admin()
@@ -175,8 +175,6 @@ if (! function_exists('xss_clean')){
             }
         }
 
-
- 
 ?>
 
 <!-- ------- -->

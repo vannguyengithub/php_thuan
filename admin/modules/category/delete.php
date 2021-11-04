@@ -13,26 +13,18 @@
         }
 
 /*
-        xóa danh mục có sản phẩm.
+      
 */
-    $is_product = $db->fetchOne("product", "category_id = $id ");
-    if ($is_product == NULL)
+
+    $num = $db->delete("category", $id);
+    if ($num > 0)
     {
-        $num = $db->delete("category", $id);
-        if ($num > 0)
-        {
-            $_SESSION['success'] = " Xóa thành công !";
-            redirectAdmin("category");
-        } 
-        else
-        {
-            $_SESSION['error'] = " Xóa không thành công !";
-            redirectAdmin("category");
-        }
-    }
+        $_SESSION['success'] = " Xóa thành công !";
+        redirectAdmin("category");
+    } 
     else
     {
-        $_SESSION['error'] = "Bạn không thể xóa khi có sản phẩm trong danh mục !";
+        $_SESSION['error'] = " Xóa không thành công !";
         redirectAdmin("category");
     }
 ?>

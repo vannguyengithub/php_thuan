@@ -33,8 +33,8 @@
              // Kiểm tra trùng
              if($editCategory['name'] != $data['name'])
              {
-                $isset = $db->fetchOne("category", "name = '".$data[name]."' ");
-                if(count($isset) > 0) 
+                $isset = $db->fetchOne("category", "name = '".$data['name']."' ");
+                if($isset > 0) 
                 {
                     $_SESSION['error'] = "Tên danh mục đã tồn tại !";
                 }
